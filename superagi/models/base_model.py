@@ -1,9 +1,8 @@
 import json
 
 from sqlalchemy import Column, DateTime, INTEGER
-from sqlalchemy.orm import declarative_base
 from datetime import datetime
-
+from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 

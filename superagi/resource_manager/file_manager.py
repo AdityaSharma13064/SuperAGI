@@ -13,6 +13,7 @@ class FileManager:
         self.session = session
         self.agent_id = agent_id
         self.agent_execution_id = agent_execution_id
+        
     def write_binary_file(self, file_name: str, data):
         if self.agent_id is not None:
             final_path = ResourceHelper.get_agent_write_resource_path(file_name,

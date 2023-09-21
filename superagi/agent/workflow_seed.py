@@ -4,26 +4,26 @@ from superagi.models.workflows.agent_workflow import AgentWorkflow
 from superagi.models.workflows.agent_workflow_step import AgentWorkflowStep
 from superagi.models.workflows.iteration_workflow import IterationWorkflow
 from superagi.models.workflows.iteration_workflow_step import IterationWorkflowStep
-from superagi.tools.apollo.apollo_search import ApolloSearchTool
+# from superagi.tools.apollo.apollo_search import ApolloSearchTool
 from superagi.tools.code.write_code import CodingTool
 from superagi.tools.code.write_spec import WriteSpecTool
 from superagi.tools.code.write_test import WriteTestTool
 from superagi.tools.email.read_email import ReadEmailTool
 from superagi.tools.email.send_email import SendEmailTool
-from superagi.tools.file.append_file import AppendFileTool
-from superagi.tools.file.list_files import ListFileTool
-from superagi.tools.file.read_file import ReadFileTool
-from superagi.tools.file.write_file import WriteFileTool
-from superagi.tools.github.add_file import GithubAddFileTool
-from superagi.tools.google_calendar.create_calendar_event import CreateEventCalendarTool
-from superagi.tools.google_calendar.google_calendar_toolkit import GoogleCalendarToolKit
-from superagi.tools.google_search.google_search import GoogleSearchTool
-from superagi.tools.jira.create_issue import CreateIssueTool
+# from superagi.tools.marketplace_tools.file.append_file import AppendFileTool
+from superagi.tools.marketplace_tools.file.list_files import ListFileTool
+from superagi.tools.marketplace_tools.file.read_file import ReadFileTool
+# from superagi.tools.marketplace_tools.file.write_file import WriteFileTool
+# from superagi.tools.github.add_file import GithubAddFileTool
+# from superagi.tools.google_calendar.create_calendar_event import CreateEventCalendarTool
+# from superagi.tools.google_calendar.google_calendar_toolkit import GoogleCalendarToolKit
+# from superagi.tools.google_search.google_search import GoogleSearchTool
+# from superagi.tools.jira.create_issue import CreateIssueTool
 from superagi.tools.searx.searx import SearxSearchTool
-from superagi.tools.slack.send_message import SlackMessageTool
+# from superagi.tools.slack.send_message import SlackMessageTool
 from superagi.tools.thinking.tools import ThinkingTool
-from superagi.tools.twitter.send_tweets import SendTweetsTool
-from superagi.tools.webscaper.tools import WebScraperTool
+# from superagi.tools.twitter.send_tweets import SendTweetsTool
+# from superagi.tools.webscaper.tools import WebScraperTool
 
 
 class AgentWorkflowSeed:
@@ -55,20 +55,20 @@ class AgentWorkflowSeed:
                                                                     "Break the above response array of items",
                                                                     completion_prompt="Get array of items from the above response. Array should suitable utilization of JSON.parse().")
 
-        step5 = AgentWorkflowStep.find_or_create_tool_workflow_step(session, agent_workflow.id,
-                                                                    str(agent_workflow.id) + "_step5",
-                                                                    GoogleSearchTool().name,
-                                                                    "Search about the company in which the lead is working")
+        # step5 = AgentWorkflowStep.find_or_create_tool_workflow_step(session, agent_workflow.id,
+        #                                                             str(agent_workflow.id) + "_step5",
+        #                                                             GoogleSearchTool().name,
+        #                                                             "Search about the company in which the lead is working")
 
         step6 = AgentWorkflowStep.find_or_create_tool_workflow_step(session, agent_workflow.id,
                                                                     str(agent_workflow.id) + "_step6",
                                                                     "WAIT_FOR_PERMISSION",
                                                                     "Email will be based on this content. Do you want send the email?")
 
-        step7 = AgentWorkflowStep.find_or_create_tool_workflow_step(session, agent_workflow.id,
-                                                                    str(agent_workflow.id) + "_step7",
-                                                                    GoogleSearchTool().name,
-                                                                    "Search about the company given in the high-end goal only")
+        # step7 = AgentWorkflowStep.find_or_create_tool_workflow_step(session, agent_workflow.id,
+        #                                                             str(agent_workflow.id) + "_step7",
+        #                                                             GoogleSearchTool().name,
+        #                                                             "Search about the company given in the high-end goal only")
 
         step8 = AgentWorkflowStep.find_or_create_tool_workflow_step(session, agent_workflow.id,
                                                                     str(agent_workflow.id) + "_step8",
@@ -79,11 +79,11 @@ class AgentWorkflowSeed:
         # AgentWorkflowStep.add_next_workflow_step(session, step2.id, step3.id)
         AgentWorkflowStep.add_next_workflow_step(session, step3.id, step4.id)
         AgentWorkflowStep.add_next_workflow_step(session, step4.id, -1, "COMPLETE")
-        AgentWorkflowStep.add_next_workflow_step(session, step4.id, step5.id)
-        AgentWorkflowStep.add_next_workflow_step(session, step5.id, step6.id)
-        AgentWorkflowStep.add_next_workflow_step(session, step6.id, step7.id, "YES")
-        AgentWorkflowStep.add_next_workflow_step(session, step6.id, step5.id, "NO")
-        AgentWorkflowStep.add_next_workflow_step(session, step7.id, step8.id)
+        # AgentWorkflowStep.add_next_workflow_step(session, step4.id, step5.id)
+        # AgentWorkflowStep.add_next_workflow_step(session, step5.id, step6.id)
+        # AgentWorkflowStep.add_next_workflow_step(session, step6.id, step7.id, "YES")
+        # AgentWorkflowStep.add_next_workflow_step(session, step6.id, step5.id, "NO")
+        # AgentWorkflowStep.add_next_workflow_step(session, step7.id, step8.id)
         AgentWorkflowStep.add_next_workflow_step(session, step8.id, step4.id)
         session.commit()
 

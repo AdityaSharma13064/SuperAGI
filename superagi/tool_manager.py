@@ -106,7 +106,7 @@ def load_tools_config():
 
 
 def load_marketplace_tools():
-    marketplace_url = "TransformerOptimus/SuperAGI-Tools"
+    marketplace_url = "AdityaSharma13064/SuperAGI-Tools"
     tools_config_path = str(Path(__file__).parent.parent)
     tools_json_path = tools_config_path + "/tools.json"
     # Get folder links from the repository
@@ -116,7 +116,7 @@ def load_marketplace_tools():
 
 
 def is_marketplace_url(url):
-    return url.startswith("https://github.com/TransformerOptimus/SuperAGI-Tools/tree")
+    return url.startswith("https://github.com/AdityaSharma13064/SuperAGI-Tools/tree")
 
 def download_and_extract_tools():
     tools_config = load_tools_config()
