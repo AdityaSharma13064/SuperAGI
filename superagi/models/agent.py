@@ -1,11 +1,10 @@
 from __future__ import annotations
 import ast
-
 import json
+
 
 from sqlalchemy import Column, Integer, String, Boolean
 from sqlalchemy import or_
-
 from superagi.lib.logger import logger
 from superagi.models.agent_config import AgentConfiguration
 from superagi.models.agent_template import AgentTemplate
