@@ -8,8 +8,8 @@ from superagi.models.workflows.iteration_workflow_step import IterationWorkflowS
 from superagi.tools.code.write_code import CodingTool
 from superagi.tools.code.write_spec import WriteSpecTool
 from superagi.tools.code.write_test import WriteTestTool
-from superagi.tools.email.read_email import ReadEmailTool
-from superagi.tools.email.send_email import SendEmailTool
+# from superagi.tools.email.read_email import ReadEmailTool
+# from superagi.tools.email.send_email import SendEmailTool
 # from superagi.tools.marketplace_tools.file.append_file import AppendFileTool
 from superagi.tools.marketplace_tools.file.list_files import ListFileTool
 from superagi.tools.marketplace_tools.file.read_file import ReadFileTool
@@ -19,7 +19,7 @@ from superagi.tools.marketplace_tools.file.read_file import ReadFileTool
 # from superagi.tools.google_calendar.google_calendar_toolkit import GoogleCalendarToolKit
 # from superagi.tools.google_search.google_search import GoogleSearchTool
 # from superagi.tools.jira.create_issue import CreateIssueTool
-from superagi.tools.searx.searx import SearxSearchTool
+# from superagi.tools.searx.searx import SearxSearchTool
 # from superagi.tools.slack.send_message import SlackMessageTool
 from superagi.tools.thinking.tools import ThinkingTool
 # from superagi.tools.twitter.send_tweets import SendTweetsTool
@@ -70,10 +70,10 @@ class AgentWorkflowSeed:
         #                                                             GoogleSearchTool().name,
         #                                                             "Search about the company given in the high-end goal only")
 
-        step8 = AgentWorkflowStep.find_or_create_tool_workflow_step(session, agent_workflow.id,
-                                                                    str(agent_workflow.id) + "_step8",
-                                                                    SendEmailTool().name,
-                                                                    "Customize the Email according to the company information in the mail")
+        # step8 = AgentWorkflowStep.find_or_create_tool_workflow_step(session, agent_workflow.id,
+        #                                                             str(agent_workflow.id) + "_step8",
+        #                                                             SendEmailTool().name,
+        #                                                             "Customize the Email according to the company information in the mail")
 
         # AgentWorkflowStep.add_next_workflow_step(session, step1.id, step2.id)
         # AgentWorkflowStep.add_next_workflow_step(session, step2.id, step3.id)
@@ -84,7 +84,7 @@ class AgentWorkflowSeed:
         # AgentWorkflowStep.add_next_workflow_step(session, step6.id, step7.id, "YES")
         # AgentWorkflowStep.add_next_workflow_step(session, step6.id, step5.id, "NO")
         # AgentWorkflowStep.add_next_workflow_step(session, step7.id, step8.id)
-        AgentWorkflowStep.add_next_workflow_step(session, step8.id, step4.id)
+        # AgentWorkflowStep.add_next_workflow_step(session, step8.id, step4.id)
         session.commit()
 
     @classmethod
@@ -115,18 +115,18 @@ class AgentWorkflowSeed:
                                                                     "Read the job description from file mentioned in High-Level GOAL",
                                                                     "Check if the resume matches the job description in goal")
 
-        step5 = AgentWorkflowStep.find_or_create_tool_workflow_step(session, agent_workflow.id,
-                                                                    str(agent_workflow.id) + "_step5",
-                                                                    SendEmailTool().name,
-                                                                    "Write a custom Email the candidates for job profile based on their experience")
+        # step5 = AgentWorkflowStep.find_or_create_tool_workflow_step(session, agent_workflow.id,
+        #                                                             str(agent_workflow.id) + "_step5",
+        #                                                             SendEmailTool().name,
+        #                                                             "Write a custom Email the candidates for job profile based on their experience")
 
         AgentWorkflowStep.add_next_workflow_step(session, step1.id, step2.id)
         AgentWorkflowStep.add_next_workflow_step(session, step2.id, step3.id)
         AgentWorkflowStep.add_next_workflow_step(session, step2.id, -1, "COMPLETE")
         AgentWorkflowStep.add_next_workflow_step(session, step3.id, step4.id)
-        AgentWorkflowStep.add_next_workflow_step(session, step4.id, step5.id, "YES")
+        # AgentWorkflowStep.add_next_workflow_step(session, step4.id, step5.id, "YES")
         AgentWorkflowStep.add_next_workflow_step(session, step4.id, step2.id, "NO")
-        AgentWorkflowStep.add_next_workflow_step(session, step5.id, step2.id)
+        # AgentWorkflowStep.add_next_workflow_step(session, step5.id, step2.id)
         session.commit()
 
 

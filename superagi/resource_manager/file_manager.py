@@ -53,8 +53,7 @@ class FileManager:
             
 
             if resource.storage_type == StorageType.S3.value:
-                s3_helper = S3Helper()
-                s3_helper.upload_file(img, path=resource.path)
+                S3Helper.upload_file(img, path=resource.path)
 
     def write_file(self, file_name: str, content):
         if self.agent_id is not None:
@@ -110,10 +109,11 @@ class FileManager:
     def read_file(self, file_name: str):
         if self.agent_id is not None:
             final_path = self.get_agent_resource_path(file_name)
-            print("here is the final path of read file: ",final_path,"END")
+            print("here is the path of read file: ",final_path,"END")
 
         else:
             final_path = ResourceHelper.get_resource_path(file_name)
+            print("here is the final path of read file: ",final_path,"END")
 
         try:
             with open(final_path, mode="r") as file:
@@ -133,8 +133,10 @@ class FileManager:
         
         if self.agent_id is not None:
             final_path = self.get_agent_resource_path("")
+            print("Here is the path of get file: ",final_path,"END")
         else:
             final_path = ResourceHelper.get_resource_path("")
+            print("Here is the final path of get file: ",final_path,"END")
         try:
             # List all files in the directory
             files = os.listdir(final_path)
