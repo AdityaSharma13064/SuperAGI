@@ -65,7 +65,6 @@ class SendEmailAttachmentTool(BaseTool):
                                                                      session=self.toolkit_config.session,
                                                                      agent_execution_id=self.agent_execution_id)
                                                                  )
-        
         ctype, encoding = mimetypes.guess_type(final_path)
         if ctype is None or encoding is not None:
             ctype = "application/octet-stream"
